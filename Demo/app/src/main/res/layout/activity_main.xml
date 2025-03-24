@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/txtnumb1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número 1"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/txtnumb2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número 2 "
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resultado: "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="4"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/btnSumar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="+"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btnRestar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="-"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btnMultiplicar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="×"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btnDividir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="÷"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btnRaiz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="√"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btnPotencia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="xʸ"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/btnPi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="2"
+                android:text="π"
+                android:textSize="20sp"/>
+        </GridLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
