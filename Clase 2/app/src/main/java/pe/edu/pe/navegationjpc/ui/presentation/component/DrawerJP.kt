@@ -48,7 +48,7 @@ fun MyAppDrawer(
     val drawerItems = listOf(
         DrawerItem("Home", "home"),
         DrawerItem("Profile", "profile"),
-        DrawerItem("Settings", "settings"),
+        DrawerItem("Venta", "venta"),
         DrawerItem("Calc", "calc"),
         DrawerItem("QR", "barcode")
     )
