@@ -1,18 +1,13 @@
-
-
-
-
-
-
-
-
 package pe.edu.upeu.sysventasjpc
+import android.graphics.Color
+import androidx.compose.runtime.getValue
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -32,7 +27,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
@@ -55,7 +49,7 @@ import pe.edu.upeu.sysventasjpc.ui.theme.SysVentasJPCTheme
 import pe.edu.upeu.sysventasjpc.ui.theme.ThemeType
 import pe.edu.upeu.sysventasjpc.utils.TokenUtils
 import pe.edu.upeu.sysventasjpc.utils.isNight
-import androidx.compose.runtime.getValue
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +74,7 @@ class MainActivity : ComponentActivity() {
                 }
                 else->{LightRedColors}
             }
-            TokenUtils.CONTEXTO_APPX=this@MainActivity
+            TokenUtils.CONTEXTO_APPX=this
             SysVentasJPCTheme(colorScheme = colorScheme) {
                 Surface (
                     modifier = Modifier.fillMaxSize(),
@@ -88,19 +82,13 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //Greeting("Android")
                     val navController= rememberNavController()
-                    MainScreen(navController, darkMode = darkTheme,
-                        themeType=themeType)
+                    MainScreen(
+                        navController, darkMode = darkTheme,
+                        themeType = themeType
+                    )
                 }
-                /*Scaffold(modifier = Modifier.fillMaxSize()) {
-               innerPadding ->
-                Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
-                )
-                }*/
             }
         }
-
     }
 }
 
@@ -112,13 +100,18 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+}
 @Composable
 fun MainScreen(
     navController: NavHostController,
     darkMode: MutableState<Boolean>,
     themeType: MutableState<ThemeType>
 ) {
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val drawerState = rememberDrawerState(initialValue =
+        DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val openDialog = remember { mutableStateOf(false) }
     val navigationItems = listOf(
@@ -127,6 +120,7 @@ fun MainScreen(
         Destinations.Pantalla3,
         Destinations.Pantalla4,
         Destinations.Pantalla5,
+        Destinations.ProductoMainSC,
     )
     val navigationItems2 = listOf(
         Destinations.Pantalla1,
@@ -158,15 +152,12 @@ fun MainScreen(
                 "Shopping Cart"
             ) {
                 val toast = Toast.makeText(context, "Hola Mundo", Toast.LENGTH_LONG) // in Activity
-                toast.view!!.getBackground().setColorFilter(
-                    android.graphics.Color.WHITE,
-                    PorterDuff.Mode.SRC_IN)
+                toast.view!!.getBackground().setColorFilter(Color.CYAN, PorterDuff.Mode.SRC_IN)
                 toast.show()
             },
             FabItem(
                 Icons.Filled.Favorite,
-                "Favorite") { /*TODO*/ }
-        )
+                "Favorite") {} )
         Scaffold(
             topBar = {
                 CustomTopAppBar (
@@ -180,31 +171,13 @@ fun MainScreen(
                 )
             }
             , modifier = Modifier,
-
-            ) {
-            NavigationHost(navController, darkMode, modif= it
-            )
+        ){
+            NavigationHost(navController = navController, darkMode = darkMode, modif= it)
         }
     }
     Dialog (showDialog = openDialog.value, dismissDialog = {
-        openDialog.value = false })
+        openDialog.value=false})
 }
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    // {
-     //   Greeting("Android")
-    //}
-}
-
-
-
-
-
-
-
-
 
 
 
