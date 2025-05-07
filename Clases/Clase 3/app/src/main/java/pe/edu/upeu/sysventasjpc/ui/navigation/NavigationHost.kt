@@ -13,6 +13,8 @@ import pe.edu.upeu.sysventasjpc.ui.presentation.screens.Pantalla3
 import pe.edu.upeu.sysventasjpc.ui.presentation.screens.Pantalla4
 import pe.edu.upeu.sysventasjpc.ui.presentation.screens.Pantalla5
 import pe.edu.upeu.sysventasjpc.ui.presentation.screens.login.LoginScreen
+import pe.edu.upeu.sysventasjpc.ui.presentation.screens.marca.MarcaForm
+import pe.edu.upeu.sysventasjpc.ui.presentation.screens.marca.MarcaMain
 import pe.edu.upeu.sysventasjpc.ui.presentation.screens.producto.ProductoForm
 import pe.edu.upeu.sysventasjpc.ui.presentation.screens.producto.ProductoMain
 
@@ -75,6 +77,22 @@ fun NavigationHost(
             requireNotNull(prodId)
             ProductoForm(text = prodId, darkMode = darkMode,navController=navController )
         }
+        composable(Destinations.MarcaMainSC.route){
+            MarcaMain(navegarEditarAct = {newText->
+                //navController.navigate(Destinations.MarcaFormSC.passId(newText))
+            },
+                navController =navController )
+        }
+        composable(Destinations.MarcaFormSC.route, arguments =
+            listOf(navArgument("marcId"){
+                defaultValue="marcId"
+            })){navBackStackEntry -> var
+                marcId=navBackStackEntry.arguments?.getString("marcId")
+            requireNotNull(marcId)
+            MarcaForm(text = marcId, darkMode = darkMode,
+                navController=navController )
+        }
+
 
     }
 }

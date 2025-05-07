@@ -10,6 +10,6 @@ import androidx.room.PrimaryKey
 data class Marca (
     @PrimaryKey
     @ColumnInfo(name = "id_marca")
-    val idMarca: Long,
-    val nombre: String
+    var idMarca: Long,
+    var nombre: String
 )
